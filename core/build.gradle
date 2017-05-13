@@ -1,0 +1,24 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.6
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets.main.java.srcDirs = [ "src/" ]
+sourceSets.main.kotlin.srcDirs += [ "src/" ]
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+}
+
+eclipse.project {
+    name = appName + "-core"
+}
