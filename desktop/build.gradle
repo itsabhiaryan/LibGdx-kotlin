@@ -2,7 +2,7 @@ apply plugin: "java"
 
 sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs += [ "src/" ]
-//sourceSets.main.kotlin.srcDirs += ["src/" ]
+sourceSets.main.kotlin.srcDirs += ["src/" ]
 
 project.ext.mainClassName = "com.nayragames.two.desktop.DesktopLauncher1"
 project.ext.assetsDir = new File("../android/assets");
