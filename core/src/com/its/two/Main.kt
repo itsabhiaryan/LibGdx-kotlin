@@ -21,6 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Button
 import com.badlogic.gdx.scenes.scene2d.ui.Container
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+import com.badlogic.gdx.utils.viewport.ExtendViewport
 import java.util.logging.FileHandler
 
 /**
@@ -28,34 +29,41 @@ import java.util.logging.FileHandler
  */
 
 class Main : ApplicationAdapter(),InputProcessor {
-    override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return true
+    override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return  false;
     }
 
-    override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return false
+    override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return  false
     }
+
+
 
     override fun keyTyped(character: Char): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return  false
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun scrolled(amount: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun keyUp(keycode: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
+     //   TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun keyDown(keycode: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
+      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
@@ -78,7 +86,9 @@ class Main : ApplicationAdapter(),InputProcessor {
         var body=world.createBody(bodydef)
         body.createFixture(fixturedef)
 
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false;
+
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     internal lateinit  var batch: SpriteBatch
@@ -91,17 +101,23 @@ class Main : ApplicationAdapter(),InputProcessor {
 
     internal lateinit var vec3:Vector3
 
+    internal lateinit var extendViewport:ExtendViewport
+
     override fun create() {
         batch = SpriteBatch()
         img = Texture("badlogic.jpg")
         var tex = TextureRegionDrawable(TextureRegion(img))
 
 
+
         world= World(Vector2(0F,-9.8F),true)
         world.setContactListener(MyContactListener())
         b2dRenderer= Box2DDebugRenderer();
+
+
         cam= OrthographicCamera();
-        cam.setToOrtho(false,48F,80F)
+      //  cam.setToOrtho(false,48F,80F)
+        extendViewport=ExtendViewport(48f,80f,cam)
 
         vec3= Vector3()
 
@@ -171,28 +187,36 @@ class Main : ApplicationAdapter(),InputProcessor {
 
         b2dRenderer.render(world,cam.combined)
 
-        world.step(1/60F,6,4)
+        world.step(1/60F,6,2)
 
     }
 
+    override fun resize(width:Int,height:Int){
+        extendViewport.update(width,height)
+        extendViewport.camera.position.set(24f,40f,0f)
+        extendViewport.camera.update()
+
+    }
 }
+
+
 
 
 class MyContactListener:ContactListener{
     override fun postSolve(contact: Contact?, impulse: ContactImpulse?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun preSolve(contact: Contact?, oldManifold: Manifold?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun beginContact(contact: Contact?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun endContact(contact: Contact?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
