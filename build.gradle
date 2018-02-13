@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlinVersion = '1.1.2'
+    ext.kotlinVersion = '1.2.21'
     repositories {
         mavenLocal()
         mavenCentral()
@@ -19,12 +19,11 @@ allprojects {
     version = '1.0'
     ext {
         appName = "2048"
-        gdxVersion = '1.9.3'
+        gdxVersion = '1.9.8'
         roboVMVersion = '2.1.0'
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
-        ext.kotlinVersion = '1.1.2'
     }
 
 
